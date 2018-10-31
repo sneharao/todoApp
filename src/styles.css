@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+.added-recently {
+	animation-name: color_change;
+	animation-duration: 30s;
+	animation-iteration-count: 1;
+	animation-direction: alternate;
+}
+
+@keyframes color_change {
+    from { color: red; }
+	to { color: black }
+}
+
+@-webkit-keyframes color_change {
+	from { color: red; }
+	to { color: black }
+}
+
