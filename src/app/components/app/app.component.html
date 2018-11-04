@@ -1,0 +1,25 @@
+<div class="bodystyle">
+    <section class="formcontainer">
+        <form (ngSubmit)="addTodo(createtaskform.value)" #createtaskform="ngForm" autocomplete="off">
+            <input class="new-todo" name="newTodo" placeholder="What needs to be done?" [(ngModel)]="newTodo"
+                ng-disabled="saving" autofocus="">
+        </form>
+        <todo-list [todoList]="todoList" [status]="status"></todo-list>
+        <footer class="footer" *ngIf="todoList.length > 0">
+            <span class="todo-count"><strong>{{itemsLeftCount}} items left</strong>
+            </span>
+            <ul class="filters">
+                <li>
+                    <button ng-class="{selected: status == 'all'" (click)="setStatus('all')">All</button>
+                </li>
+                <li>
+                    <button ng-class="{selected: status == 'active'}" (click)="setStatus('active')">Active</button>
+                </li>
+                <li>
+                    <button ng-class="{selected: status == 'completed'}" (click)="setStatus('completed')">Completed</button>
+                </li>
+            </ul>
+            <button class="clear-completed" (click)="clearCompletedTodos()" ng-show="completedCount">Clear completed</button>
+        </footer>
+    </section>
+</div>

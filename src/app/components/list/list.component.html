@@ -1,0 +1,21 @@
+<ul class="todo-list">
+    <li class="list-title">
+        <div class="label-container"><span>TodoName</span><span> Created At</span><span>Completed At</span></div>
+    </li>
+    <li *ngFor="let eachtask of todoList | filter : status; let taskIndex = index" [class.editing]="eachtask.isEditing">
+        <div class="view" [className]="eachtask.className">
+            <input [(ngModel)]="eachtask.isComplete" class="toggle" type="checkbox" (change)="toggleCompleted(eachtask,taskIndex)">
+            <div class="values-container" [ngClass]="{'strikethrough':eachtask.isComplete,'set-display-none':eachtask.isEditing}">
+                <label (dblclick)="editTodo(eachtask)">{{eachtask.todoName}}</label>
+                <label>{{eachtask.createdDate | date : "hh:mm"}}</label>
+                <label>{{eachtask.completedDate | date : "hh:mm"}}</label>
+                <button class="destroy" (click)="removeTodo(eachtask,taskIndex)">&#10005;</button>
+            </div>
+        </div>
+        <form (ngSubmit)="saveEdits(eachtask, 'submit')" class="" *ngIf="eachtask.isEditing">
+            <input #editform="ngModel" class="edit" [(ngModel)]="eachtask.todoName" (blur)="saveEdits(eachtask, 'blur')"
+                [ngModelOptions]="{'standalone': 'true'}" (todoEscape)="revertEdits(taskIndex)" [todoFocus]="eachtask.isEditing" />
+        </form>
+    </li>
+
+</ul>

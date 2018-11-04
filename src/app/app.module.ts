@@ -3,12 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Routes,RouterModule } from '@angular/router'; 
 
-import { AppComponent } from './app.component';
-import { EscapeDirective } from './escape.directive';
-import { FocusDirective } from './focus.directive';
-import { FilterPipe } from './filter.pipe';
-import { ListComponent } from './list/list.component';
-import { TodoDataService } from './todo-data.service';
+import { AppComponent } from './components/app/app.component';
+import { EscapeDirective } from './directives/escape/escape.directive';
+import { FocusDirective } from './directives/focus/focus.directive';
+import { FilterPipe } from './filters/filter.pipe';
+import { ListComponent } from './components/list/list.component';
 
 const routes:Routes = [
 
@@ -29,7 +28,7 @@ const routes:Routes = [
       routes
     )
   ],
-  providers: [TodoDataService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
