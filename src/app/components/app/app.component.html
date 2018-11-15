@@ -4,7 +4,7 @@
             <input class="new-todo" name="newTodo" placeholder="What needs to be done?" [(ngModel)]="newTodo"
                 ng-disabled="saving" autofocus="">
         </form>
-        <todo-list [todoList]="todoList" [status]="status"></todo-list>
+        <todo-list [apptodoList]="todoList" [status]="status"></todo-list>
         <footer class="footer" *ngIf="todoList.length > 0">
             <span class="todo-count"><strong>{{itemsLeftCount}} items left</strong>
             </span>

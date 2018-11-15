@@ -13,7 +13,7 @@ import { TodoDataService } from 'src/app/services/todoservice/todo-data.service'
 })
 export class ListComponent implements OnInit {
 
-  @Input() todoList: Todo[];
+  @Input() apptodoList: Todo[];
   @Input() status: string;
   public originalTodo: Todo;
   public saveEvent: string;
@@ -29,10 +29,10 @@ export class ListComponent implements OnInit {
   removeTodo(value,index) {
     if (value.id) {
       this.todoService.deleteTask(value.id).then(res => {
-        this.todoList.splice(index, 1);
-        this.completedTodoService.removeFromCompletedTodos(index,this.todoList,false);
-        this.todoService.changeCountValue(this.todoService.returnActiveItemsCount(this.todoList));
-        this.completedTodoService.assignColorCodes(this.todoList);
+        this.apptodoList.splice(index, 1);
+        this.completedTodoService.removeFromCompletedTodos(index,this.apptodoList,false);
+        this.todoService.changeCountValue(this.todoService.returnActiveItemsCount(this.apptodoList));
+        this.completedTodoService.assignColorCodes(this.apptodoList);
       }, error => { });
     }
   }
@@ -73,7 +73,7 @@ export class ListComponent implements OnInit {
   }
 
   revertEdits = function (taskIndex) {
-    this.todoList[taskIndex] = this.originalTodo;
+    this.apptodoList[taskIndex] = this.originalTodo;
     this.originalTodo = null;
   }
 
@@ -85,15 +85,15 @@ export class ListComponent implements OnInit {
     }
     else {
       todo.completedDate = null;
-      this.completedTodoService.removeFromCompletedTodos(index,this.todoList,true);
+      this.completedTodoService.removeFromCompletedTodos(index,this.apptodoList,true);
     }
 
-    this.completedTodoService.assignColorCodes(this.todoList);
+    this.completedTodoService.assignColorCodes(this.apptodoList);
 
 
 
     this.todoService.updateTask(todo).then(res => { }, error => { });
-    this.todoService.changeCountValue(this.todoService.returnActiveItemsCount(this.todoList));
+    this.todoService.changeCountValue(this.todoService.returnActiveItemsCount(this.apptodoList));
   }
 
     

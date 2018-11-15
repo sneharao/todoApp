@@ -2,7 +2,7 @@
     <li class="list-title">
         <div class="label-container"><span>TodoName</span><span> Created At</span><span>Completed At</span></div>
     </li>
-    <li *ngFor="let eachtask of todoList | filter : status; let taskIndex = index" [class.editing]="eachtask.isEditing">
+    <li *ngFor="let eachtask of apptodoList | filter : status; let taskIndex = index" [class.editing]="eachtask.isEditing">
         <div class="view" [className]="eachtask.className">
             <input [(ngModel)]="eachtask.isComplete" class="toggle" type="checkbox" (change)="toggleCompleted(eachtask,taskIndex)">
             <div class="values-container" [ngClass]="{'strikethrough':eachtask.isComplete,'set-display-none':eachtask.isEditing}">
