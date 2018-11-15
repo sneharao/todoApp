@@ -8,7 +8,7 @@ export class FilterPipe implements PipeTransform {
 
   transform(tasks: any[], status: string): Todo[] {
 
-    if (!tasks) return [];
+    if (tasks == null) return [];
     if (status == 'all') return tasks;
 
     return tasks.filter(eachtask => {
